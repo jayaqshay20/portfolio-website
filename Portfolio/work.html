@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works - Shoya Kajita</title>
+    <meta name="description" content="Webサイトのフロントエンド実装・コーディングを軸に、WebGLやBlenderを用いたインタラクティブ表現を制作するWebデベロッパー、Shoya Kajitaのポートフォリオサイトです。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="scan-lines"></div>
+    <div class="grain-overlay"></div>
+
+    <nav class="nav visible" id="nav">
+        <a href="index.html" class="logo">
+            <img src="assets/images/Frame.svg" alt="Jay Aqshay Logo" class="logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link" data-section="home">HOME</a>
+            <a href="about.html" class="nav-link" data-section="about">ABOUT</a>
+            <a href="work.html" class="nav-link active" data-section="works">WORKS</a>
+            <a href="artwork.html" class="nav-link" data-section="artwork">ARTWORK</a>
+        </div>
+        <div class="nav-controls">
+            <button class="nav-control" id="handToggle">Hand: Off</button>
+            <button class="nav-control" id="soundToggle">Sound: Off</button>
+        </div>
+    </nav>
+
+    <section class="section works" id="works">
+        <div class="works-content">
+            <div class="works-header">
+                <h2 class="works-title">[ 02 WORKS ]</h2>
+            </div>
+            <div class="works-list">
+                <div class="work-item">
+                    <div class="work-bg"><img src="assets/images/artwork-1.jpg" alt="SAZEO CO., LTD"></div>
+                    <div class="work-gradient"></div>
+                    <div class="work-content">
+                        <h3 class="work-company">SAZEO CO., LTD</h3>
+                        <p class="work-role">Website Developer</p>
+                        <span class="work-year">2024</span>
+                    </div>
+                    <div class="work-border"></div>
+                </div>
+                <div class="work-item">
+                    <div class="work-bg"><img src="assets/images/artwork-2.jpg" alt="SHIROITO CO., LTD"></div>
+                    <div class="work-gradient"></div>
+                    <div class="work-content">
+                        <h3 class="work-company">SHIROITO CO., LTD</h3>
+                        <p class="work-role">Website Developer / CG Creator</p>
+                        <span class="work-year">2024</span>
+                    </div>
+                    <div class="work-border"></div>
+                </div>
+                <div class="work-item">
+                    <div class="work-bg"><img src="assets/images/artwork-3.jpg" alt="ECORU TOBOSHI"></div>
+                    <div class="work-gradient"></div>
+                    <div class="work-content">
+                        <h3 class="work-company">ECORU TOBOSHI</h3>
+                        <p class="work-role">Website Developer</p>
+                        <span class="work-year">2023</span>
+                    </div>
+                    <div class="work-border"></div>
+                </div>
+                <div class="work-item">
+                    <div class="work-bg"><img src="assets/images/artwork-4.jpg" alt="Cell Interactive Inc."></div>
+                    <div class="work-gradient"></div>
+                    <div class="work-content">
+                        <h3 class="work-company">Cell Interactive Inc.</h3>
+                        <p class="work-role">Website Developer</p>
+                        <span class="work-year">2021 - Present</span>
+                    </div>
+                    <div class="work-border"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoya Kajita - Website Developer & CG Creator</title>
+    <meta name="description" content="Webサイトのフロントエンド実装・コーディングを軸に、WebGLやBlenderを用いたインタラクティブ表現を制作するWebデベロッパー、Shoya Kajitaのポートフォリオサイトです。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen">
+        <div>
+            <div class="loading-title loading-line" style="animation-delay: 0.1s">LOADING</div>
+            <div class="loading-divider loading-line" style="animation-delay: 0.2s">----------------------------------------</div>
+            <div class="loading-text loading-line" style="animation-delay: 0.3s">Loading environment...</div>
+            <div class="loading-text loading-line" style="animation-delay: 0.4s">Setting up WebGL environment...</div>
+            <div class="loading-text loading-line" style="animation-delay: 0.5s">Optimizing render pipeline...</div>
+            <div class="loading-text loading-line" style="animation-delay: 0.6s">Initializing hand input system...</div>
+            <div class="loading-text loading-line" style="animation-delay: 0.7s">> Just a moment...</div>
+            <div class="loading-text loading-line" style="animation-delay: 0.8s; margin-top: 1rem;">
+                Assets : <span id="assetCount">0</span> / 20
+            </div>
+            <div class="progress-bar loading-line" style="animation-delay: 0.9s">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+        <div id="welcomeSection" style="opacity: 0; transition: opacity 0.5s; margin-top: 2rem;">
+            <div class="loading-title">WELCOME</div>
+            <div class="loading-divider">----------------------------------------</div>
+            <div class="loading-text">NAME : Jay Aqshay</div>
+            <div class="loading-text">ROLE : Graphic Designer</div>
+            <div class="loading-text">FIELD : Interactive / Website / UI/UX</div>
+            <div class="loading-text">LIKE : Anime</div>
+            <div class="loading-text">FROM : Malaysia</div>
+            <div class="loading-text" style="margin-top: 1rem;">Transitioning to scene...</div>
+            <div class="cursor-blink">_</div>
+        </div>
+        <div class="barcode" id="barcode"></div>
+    </div>
+
+    <div class="scan-lines"></div>
+    <div class="grain-overlay"></div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html" class="logo">
+            <img src="assets/images/Frame.svg" alt="Jay Aqshay Logo" class="logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active" data-section="home">HOME</a>
+            <a href="about.html" class="nav-link" data-section="about">ABOUT</a>
+            <a href="work.html" class="nav-link" data-section="works">WORKS</a>
+            <a href="artwork.html" class="nav-link" data-section="artwork">ARTWORK</a>
+        </div>
+        <div class="nav-controls">
+            <button class="nav-control" id="handToggle">Hand: Off</button>
+            <button class="nav-control" id="soundToggle">Sound: Off</button>
+        </div>
+    </nav>
+
+    <section class="section hero" id="home">
+        <div class="hero-bg" style="background-image: url('assets/images/anime-style-mythical-dragon-creature.jpg')"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-vignette"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">HELLO WORLD</h1>
+            <p class="hero-subtitle">JAY AQSHAY</p>
+            <p class="hero-jp">Graphic Designer</p>
+            <div class="hero-guides">
+                <a href="#" class="hero-guide"></a>
+                <a href="#" class="hero-guide"></a>
+            </div>
+        </div>
+        <div class="hero-copyright">© JAY AQSHAY</div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
