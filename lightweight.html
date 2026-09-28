@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lightweight — Carbon Wheel Systems</title>
+<meta name="description" content="Lightweight carbon wheel systems. A cinematic engineering showcase built with Three.js.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="lightweight/style.css">
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="fallback" aria-hidden="true"><svg viewBox="-340 -340 680 680"><g id="fb-wheel"></g></svg></div>
+<div class="scrim scrim-l" aria-hidden="true"></div>
+<div class="scrim scrim-r" aria-hidden="true"></div>
+<div class="scrim scrim-b" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<svg id="ov" aria-hidden="true">
+  <defs>
+    <linearGradient id="fgrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+    <mask id="fmask" maskUnits="userSpaceOnUse" x="0" y="0" width="20000" height="20000"><rect x="0" y="0" width="20000" height="20000" fill="url(#fgrad)"/></mask>
+  </defs>
+  <g id="g-flow" mask="url(#fmask)" opacity="0"></g>
+  <g id="g-meas" opacity="0">
+    <path id="m-ring" class="ms"/><path id="m-tick" class="ms ms-2"/><path id="m-dim" class="ms"/>
+    <path id="m-ptr" class="ms-fill"/><path id="m-cross" class="ms ms-2"/>
+    <text id="m-dim-t" text-anchor="middle">Ø 622 MM · ETRTO 622 × 21</text>
+    <text id="m-th"></text>
+  </g>
+  <g id="g-carb" opacity="0">
+    <circle id="c-ret" class="ms" r="86"/><path id="c-x" class="ms ms-2"/><path id="c-lead" class="ms"/>
+    <path id="c-bar" class="ms-b"/><text id="c-bar-t">5 MM</text>
+    <text id="c-t1">3K TWILL · 2 × 2</text><text id="c-t2" class="dim">T800 / M40J HYBRID</text><text id="c-t3" class="dim">184 PLIES · 0.21 MM</text>
+  </g>
+</svg>
+<div id="mk" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div id="cursor" aria-hidden="true">
+  <div class="c-ring-w"><div class="c-ring"></div><div class="c-label"><span class="c-tag"></span><span class="c-xy"></span></div></div>
+  <div class="c-dot-w"><div class="c-dot"></div></div>
+</div>
+
+<header class="nav">
+  <a class="brand" href="#hero" data-go="0">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="2.2" stroke="currentColor" stroke-width="1.2"/><path d="M12 1v5M12 18v5M1 12h5M18 12h5" stroke="currentColor" stroke-width="1.2"/><circle cx="19.1" cy="4.9" r="1.4" fill="#2f8cff"/></svg>
+    <span>LIGHTWEIGHT</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#series" data-go="5">Wheels</a>
+    <a href="#aero" data-go="1">Technology</a>
+    <a href="#carbon" data-go="2">Craft</a>
+    <a href="#precision" data-go="4">Studio</a>
+    <a href="#cta" data-go="9">Contact</a>
+  </nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-label="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/></svg>
+  </button>
+</header>
+
+<div class="indicator" aria-hidden="true">
+  <span class="i-cur" id="i-cur">00</span>
+  <span class="i-track"><i id="i-fill"></i></span>
+  <span class="i-tot">05</span>
+</div>
+
+<div class="hud" aria-hidden="true">
+  <span>RPM <b id="h-rpm">000.0</b></span>
+  <span class="h-th">θ <b id="h-th">000.0°</b></span>
+  <span class="h-sec" id="h-sec">SEC 00 · INTRO</span>
+</div>
+
+<main>
+  <section class="station hero" id="hero" data-ch="0" data-side="0" data-name="INTRO">
+    <div class="hero-copy">
+      <p class="eyebrow hero-fade"><span class="sq"></span>LW-01 · Carbon wheel system</p>
+      <h1 class="display hero-title"><span class="ln"><span>Engineered</span></span><span class="ln"><span>for speed.</span></span></h1>
+      <p class="hero-sub hero-fade">Carbon technology without compromise.</p>
+      <div class="hero-fade"><a class="cta-link magnetic" href="#aero" data-go="1"><span>Explore the wheel</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+    </div>
+    <div class="hero-meta hero-fade"><span>Ø 622 × 50 mm</span><span>1.18 kg / pair</span><span class="cue">Scroll to rotate <i></i></span></div>
+  </section>
+
+  <section class="station right" id="aero" data-ch="1" data-side="1" data-name="AERODYNAMICS">
+    <div class="copy">
+      <p class="eyebrow rv"><span class="num">01</span> / Aerodynamics</p>
+      <h2 class="h2 rv rv-blur" style="--i:1">Every surface has a purpose.</h2>
+      <p class="body rv" style="--i:2">A 50 mm toroidal profile keeps the airflow attached at yaw angles up to 15°, so the rim works like a wing instead of a wall.</p>
+      <figure class="profile rv" style="--i:3"><svg id="profile-svg" viewBox="0 0 460 230" role="img" aria-label="Rim cross-section with airflow lines"></svg><figcaption>Section A–A · T50 toroidal profile · Flow 45 km/h</figcaption></figure>
+      <dl class="specs rv" style="--i:4"><div><dt>Drag @ 45 km/h</dt><dd>−7.2 W</dd></div><div><dt>Stable yaw</dt><dd>±15°</dd></div><div><dt>Rim depth</dt><dd>50 mm</dd></div></dl>
+    </div>
+  </section>
+
+  <section class="station" id="carbon" data-ch="2" data-side="0" data-name="CARBON">
+    <div class="copy low">
+      <p class="eyebrow rv"><span class="num">02</span> / Carbon</p>
+      <h2 class="h2 rv rv-blur" style="--i:1">Strength begins at the molecular level.</h2>
+      <p class="body rv" style="--i:2">Every rim is laid by hand from 184 pre-cut plies, then cured for eleven hours under pressure. Nothing is filled and nothing is painted.</p>
+      <dl class="specs rv" style="--i:3"><div><dt>Fibre</dt><dd>M40J</dd></div><div><dt>Plies</dt><dd>184</dd></div><div><dt>Cure</dt><dd>11 h · 6 bar</dd></div></dl>
+    </div>
+  </section>
+
+  <section class="station" id="weight" data-ch="3" data-side="0" data-name="WEIGHT">
+    <div class="copy">
+      <p class="eyebrow rv"><span class="num">03</span> / Weight</p>
+      <div class="kg rv" style="--i:1"><span id="kg">1.18</span><small>KG</small></div>
+      <h2 class="h2 rv rv-blur" style="--i:2">Less mass.<br>More response.</h2>
+      <p class="readout rv" style="--i:3">Live <b id="kg-live">1,181.6 g</b> · Pair · Without axles</p>
+    </div>
+  </section>
+
+  <section class="station" id="precision" data-ch="4" data-side="0" data-name="PRECISION">
+    <div class="copy">
+      <p class="eyebrow rv"><span class="num">04</span> / Precision</p>
+      <h2 class="h2 rv rv-blur" style="--i:1">Every millimeter matters.</h2>
+      <p class="body rv" style="--i:2">Twenty unidirectional carbon spokes are laminated straight into rim and flange. No nipples, no threads, no tolerance stack.</p>
+    </div>
+  </section>
+
+  <section class="station series" id="series" data-ch="5" data-side=".5" data-name="SERIES">
+    <div class="copy center">
+      <p class="eyebrow rv"><span class="num">05</span> / The collection</p>
+      <h2 class="mega rv rv-blur sweep" style="--i:1">The Lightweight<br>Series</h2>
+      <p class="body rv" style="--i:2">Three wheels. One obsession.</p>
+    </div>
+  </section>
+
+  <section class="station model" id="l1" data-ch="5" data-side="0" data-name="L1 AERO">
+    <div class="copy">
+      <p class="eyebrow rv">Model 01 <span class="of">/ 03</span></p>
+      <h2 class="model-name rv rv-blur" style="--i:1">L1<span>/ Aero</span></h2>
+      <p class="body rv" style="--i:2">Designed for maximum aerodynamic performance.</p>
+      <dl class="specs rv" style="--i:3"><div><dt>Rim depth</dt><dd>78 mm</dd></div><div><dt>Weight</dt><dd>1,420 g</dd></div><div><dt>Drag @ 45 km/h</dt><dd>−11.6 W</dd></div></dl>
+      <p class="price rv" style="--i:4">From € 4,890 / pair</p>
+    </div>
+  </section>
+
+  <section class="station model right" id="l2" data-ch="5" data-side="1" data-name="L2 CLIMB">
+    <div class="copy">
+      <p class="eyebrow rv">Model 02 <span class="of">/ 03</span></p>
+      <h2 class="model-name rv rv-blur" style="--i:1">L2<span>/ Climb</span></h2>
+      <p class="body rv" style="--i:2">Designed for minimum weight.</p>
+      <dl class="specs rv" style="--i:3"><div><dt>Rim depth</dt><dd>32 mm</dd></div><div><dt>Weight</dt><dd>1,050 g</dd></div><div><dt>Lateral stiffness</dt><dd>142 N/mm</dd></div></dl>
+      <p class="price rv" style="--i:4">From € 5,290 / pair</p>
+    </div>
+  </section>
+
+  <section class="station model" id="l3" data-ch="5" data-side="0" data-name="L3 ENDURANCE">
+    <div class="copy">
+      <p class="eyebrow rv">Model 03 <span class="of">/ 03</span></p>
+      <h2 class="model-name rv rv-blur" style="--i:1">L3<span>/ Endurance</span></h2>
+      <p class="body rv" style="--i:2">Designed for long-distance performance.</p>
+      <dl class="specs rv" style="--i:3"><div><dt>Rim depth</dt><dd>47 mm</dd></div><div><dt>Weight</dt><dd>1,290 g</dd></div><div><dt>Tyre range</dt><dd>28–40 mm</dd></div></dl>
+      <p class="price rv" style="--i:4">From € 4,590 / pair</p>
+    </div>
+  </section>
+
+  <section class="station final" id="cta" data-ch="5" data-side=".5" data-name="CONTACT">
+    <div class="final-inner">
+      <h2 class="mega rv rv-blur">Ready to move?</h2>
+      <div class="rv" style="--i:1"><a class="cta-link big magnetic" href="#series" data-go="5"><span>Explore the collection</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+      <footer class="foot rv" style="--i:2">
+        <p class="wordmark">LIGHTWEIGHT<sup>®</sup></p>
+        <p>Carbon wheel systems engineered for those who refuse unnecessary weight.</p>
+        <div class="fine"><span>Design concept. Specifications and prices are illustrative.</span><span>© 2026</span></div>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="lightweight/wheel.js"></script>
+<script src="lightweight/gl.js"></script>
+<script src="lightweight/core.js"></script>
+</body>
+</html>
